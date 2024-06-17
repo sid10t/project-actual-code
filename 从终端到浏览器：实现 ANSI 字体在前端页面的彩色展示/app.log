@@ -1,0 +1,8 @@
+[32m2024-06-06 22:14:36,944 main.py[line:45] INFO    : This is an info message, sidiot![0m
+[37m2024-06-06 22:14:36,944 main.py[line:48] DEBUG   : This is a debug message, sidiot![0m
+[33m2024-06-06 22:14:36,945 main.py[line:51] WARNING : This is a warning message, sidiot![0m
+[31m2024-06-06 22:14:36,945 main.py[line:54] ERROR   : This is an error message, sidiot![0m
+[34m2024-06-06 22:14:36,945 main.py[line:57] CRITICAL: This is a critical message, sidiot![0m
+
+[32m2024-06-06 23:06:25,196 main.py[line:45] INFO    : [42m[31mHello World! --sidiot.[0m[0m
+[37m2024-06-11 22:33:09,404 main.py[line:51] DEBUG   : [42m[31mHello World! --sidiot.[0m[0m
