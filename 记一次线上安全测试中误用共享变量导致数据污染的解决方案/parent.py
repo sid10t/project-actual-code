@@ -34,7 +34,7 @@ class ParentLocal:
             print(f"{print_prefix()} Port {port} is added to all_open_ports, {self.local.all_open_ports}")
 
 
-class ParentContext:
+class ParentContextOld:
     all_open_ports = contextvars.ContextVar("all_open_ports", default=set())
 
     def __init__(self, args):
@@ -44,6 +44,23 @@ class ParentContext:
 
     def check_port(self, port):
         all_open_ports_ = self.all_open_ports.get()
+        print(print_prefix(), id(all_open_ports_))
+        if port not in all_open_ports_:
+            all_open_ports_.add(port)
+            self.all_open_ports.set(all_open_ports_)
+            print(f"{print_prefix()} Port {port} is added to all_open_ports, {self.all_open_ports.get()}")
+
+
+class ParentContext:
+    all_open_ports = contextvars.ContextVar("all_open_ports", default=set())
+
+    def __init__(self, args):
+        open_ports = set(args.get("open_ports", []))
+        self.all_open_ports.set(open_ports | self.all_open_ports.get())
+
+    def check_port(self, port):
+        all_open_ports_ = self.all_open_ports.get()
+        print(print_prefix(), id(all_open_ports_))
         if port not in all_open_ports_:
             all_open_ports_.add(port)
             self.all_open_ports.set(all_open_ports_)
